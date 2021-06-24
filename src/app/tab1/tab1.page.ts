@@ -7,16 +7,21 @@ import { ResponseMDB, Pelicula } from '../Interfaces/interfaces';
   templateUrl: 'tab1.page.html',
   styleUrls: ['tab1.page.scss']
 })
-export class Tab1Page implements OnInit{
+export class Tab1Page implements OnInit {
 
-  peliculasRecientes : Pelicula[] = [];
+  peliculasRecientes: Pelicula[] = [];
+  peliculasPopulares: Pelicula[] = [];
 
-  constructor(private moviesService : MoviesService) {}
-  
+  constructor(private moviesService: MoviesService) { }
+
   ngOnInit(): void {
     this.moviesService.getFeature().subscribe((respuesta) => {
       console.log('respuesta: ', respuesta);
       this.peliculasRecientes = respuesta.results;
+    });
+
+    this.moviesService.getPopulares().subscribe((respuesta) => {
+      this.peliculasPopulares = respuesta.results;
     });
   }
 
