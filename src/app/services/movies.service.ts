@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/member-ordering */
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { ResponseMDB } from '../Interfaces/interfaces';
+import { ResponseMDB, PeliculaDetalle, RespuestaCredits, SocialMedia } from '../Interfaces/interfaces';
 import { environment } from '../../environments/environment';
 
 const url = environment.url;
@@ -38,5 +38,17 @@ export class MoviesService {
     this.popularesPage++;
     const query = '/discover/movie?sort_by=popularity.desc&page=' + this.popularesPage;
     return this.Get<ResponseMDB>(query);
+  }
+
+  getPeliculaDetalle(id: string) {
+    return this.Get<PeliculaDetalle>(`/movie/${id}?a=1`);
+  }
+
+  getActoresPelicula(id: string) {
+    return this.Get<RespuestaCredits>(`/movie/${id}/credits?a=1`);
+  }
+
+  getSocialMediaPelicula(id: string) {
+    return this.Get<SocialMedia>(`/movie/${id}/external_ids?a=1`);
   }
 }

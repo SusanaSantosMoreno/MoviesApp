@@ -1,0 +1,52 @@
+
+.poster-detalle-sobre {
+    position: relative;
+    top: -90px;
+    margin-bottom: -75px;
+}
+
+.titulo {
+    width: 100%;
+    position: absolute;
+    color: white;
+    background-color: red;
+    padding: 5px 5px 210px 5px;
+
+    background: rgb(0,0,0);
+    background: -moz-linear-gradient(180deg, rgba(0,0,0,0) 40%, rgba(0,0,0,1) 100%);
+    background: -webkit-linear-gradient(180deg, rgba(0,0,0,0) 40%, rgba(0,0,0,1) 100%);
+    background: linear-gradient(180deg, rgba(0,0,0,0) 40%, rgba(0,0,0,1) 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#000000",endColorstr="#000000",GradientType=1);
+}
+
+.poster {
+    width: 100%;
+}
+
+.titulo h1{
+    position: absolute;
+    top: 170px;
+    left: 160px;
+}
+
+.card-actor {
+    height: 250px;
+}
+
+.actor-name {
+    position: relative;
+    top:15px;
+}
+
+.card-image {
+    width: 126px;
+    height: 190px;
+}
+
+.ml-10 {
+    margin-left: 10px;
+}
+
+.mr-10 {
+    margin-right: 10px;
+}

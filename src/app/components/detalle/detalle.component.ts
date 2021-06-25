@@ -1,4 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { MoviesService } from '../../services/movies.service';
+import { Cast, PeliculaDetalle, SocialMedia } from '../../Interfaces/interfaces';
 
 @Component({
   selector: 'app-detalle',
@@ -8,11 +10,29 @@ import { Component, Input, OnInit } from '@angular/core';
 export class DetalleComponent implements OnInit {
 
   @Input() id;
+  pelicula: PeliculaDetalle = {};
+  socialMediaPelicula: SocialMedia = {};
+  oculto = 150;
+  actores: Cast = {};
+  slideOptActores = {
+    slidesPerView: 2.3,
+    freeMode: true
+  }
 
-  constructor() { }
+  constructor(private moviesService: MoviesService) { }
 
   ngOnInit() {
-    console.log('id: ' + this.id);
+    this.moviesService.getPeliculaDetalle(this.id).subscribe(resp => {
+      this.pelicula = resp;
+    });
+
+    this.moviesService.getActoresPelicula(this.id).subscribe(resp => {
+      this.actores = resp;
+    });
+
+    this.moviesService.getSocialMediaPelicula(this.id).subscribe(resp => {
+      this.socialMediaPelicula = resp;
+    })
   }
 
 }
