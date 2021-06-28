@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/member-ordering */
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { ResponseMDB, PeliculaDetalle, RespuestaCredits, SocialMedia } from '../Interfaces/interfaces';
+import { ResponseMDB, PeliculaDetalle, RespuestaCredits, SocialMedia, Pelicula } from '../Interfaces/interfaces';
 import { environment } from '../../environments/environment';
 
 const url = environment.url;
@@ -50,5 +50,9 @@ export class MoviesService {
 
   getSocialMediaPelicula(id: string) {
     return this.Get<SocialMedia>(`/movie/${id}/external_ids?a=1`);
+  }
+
+  buscarPelicula(pelicula: string) {
+    return this.Get<Pelicula>(`/search/movie?query=${pelicula}`);
   }
 }
