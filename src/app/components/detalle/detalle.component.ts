@@ -1,6 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { MoviesService } from '../../services/movies.service';
 import { Cast, PeliculaDetalle, SocialMedia } from '../../Interfaces/interfaces';
+import { ModalController } from '@ionic/angular';
 
 @Component({
   selector: 'app-detalle',
@@ -19,7 +20,8 @@ export class DetalleComponent implements OnInit {
     freeMode: true
   }
 
-  constructor(private moviesService: MoviesService) { }
+  constructor(private moviesService: MoviesService,
+    private modalCtrl: ModalController) { }
 
   ngOnInit() {
     this.moviesService.getPeliculaDetalle(this.id).subscribe(resp => {
@@ -33,6 +35,10 @@ export class DetalleComponent implements OnInit {
     this.moviesService.getSocialMediaPelicula(this.id).subscribe(resp => {
       this.socialMediaPelicula = resp;
     })
+  }
+
+  volver() {
+    this.modalCtrl.dismiss();
   }
 
 }

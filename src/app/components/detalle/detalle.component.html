@@ -1,4 +1,21 @@
-<ion-content>
+<ion-header class="ion-no-border">
+    <ion-toolbar>
+        <ion-buttons slot="start">
+            <ion-button (click)="volver()">
+                <ion-icon slot="start" name="chevron-back-outline"></ion-icon>
+                <ion-label>Back</ion-label>
+            </ion-button>
+        </ion-buttons>
+
+        <ion-buttons slot="end">
+            <ion-button (click)="favorito()">
+                <ion-icon slot="end" name="heart-outline"></ion-icon>
+            </ion-button>
+        </ion-buttons>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content fullscreen="true">
     <ion-label class="titulo">
         <h1>{{pelicula.original_title}}</h1>
     </ion-label>
@@ -51,10 +68,10 @@
 
         <ion-slides [options]='slideOptActores'>
             <ion-slide class="card-actor" *ngFor="let actor of actores.cast">
-                <ion-card>
+                <ion-card style="min-height: 228px;">
                     <img *ngIf="!actor.profile_path" src='/assets/no-avatar.jpg' class="card-image" />
                     <img *ngIf="actor.profile_path" [src]='actor.profile_path | imagen' class="card-image" />
-                    <ion-label class="actor-name">
+                    <ion-label>
                         {{actor.name}}
                     </ion-label>
                 </ion-card>
