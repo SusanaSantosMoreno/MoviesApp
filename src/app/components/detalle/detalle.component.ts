@@ -2,6 +2,7 @@ import { Component, Input, OnInit } from '@angular/core';
 import { MoviesService } from '../../services/movies.service';
 import { Cast, PeliculaDetalle, SocialMedia } from '../../Interfaces/interfaces';
 import { ModalController } from '@ionic/angular';
+import { DataLocalService } from '../../services/data-local.service';
 
 @Component({
   selector: 'app-detalle',
@@ -19,11 +20,15 @@ export class DetalleComponent implements OnInit {
     slidesPerView: 2.3,
     freeMode: true
   }
+  existe = false;
 
   constructor(private moviesService: MoviesService,
-    private modalCtrl: ModalController) { }
+    private modalCtrl: ModalController,
+    private dataLocal: DataLocalService) { }
 
-  ngOnInit() {
+  async ngOnInit() {
+    this.existe = await this.dataLocal.existePelicula(this.id);
+
     this.moviesService.getPeliculaDetalle(this.id).subscribe(resp => {
       this.pelicula = resp;
     });
@@ -39,6 +44,11 @@ export class DetalleComponent implements OnInit {
 
   volver() {
     this.modalCtrl.dismiss();
+  }
+
+  favorito() {
+    this.existe = !this.existe;
+    this.dataLocal.guardarPelicula(this.pelicula);
   }
 
 }

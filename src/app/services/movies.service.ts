@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/member-ordering */
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { ResponseMDB, PeliculaDetalle, RespuestaCredits, SocialMedia, Pelicula } from '../Interfaces/interfaces';
+import { ResponseMDB, PeliculaDetalle, RespuestaCredits, SocialMedia, Pelicula, Genre } from '../Interfaces/interfaces';
 import { environment } from '../../environments/environment';
 
 const url = environment.url;
@@ -54,5 +54,9 @@ export class MoviesService {
 
   buscarPelicula(pelicula: string) {
     return this.Get<Pelicula>(`/search/movie?query=${pelicula}`);
+  }
+
+  getGeneros() {
+    return this.Get<Genre>(`/genre/movie/list?a=1`);
   }
 }

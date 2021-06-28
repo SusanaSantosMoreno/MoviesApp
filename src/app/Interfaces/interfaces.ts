@@ -68,9 +68,9 @@ interface Productioncompany {
   origin_country: string;
 }
 
-interface Genre {
-  id: number;
-  name: string;
+export interface Genre {
+  id?: number;
+  name?: string;
 }
 
 export interface RespuestaCredits {
