@@ -4,6 +4,7 @@ import { DataLocalService } from '../services/data-local.service';
 import { MoviesService } from '../services/movies.service';
 import { ModalController } from '@ionic/angular';
 import { DetalleComponent } from '../components/detalle/detalle.component';
+import { NativeStorageServiceService } from '../services/native-storage-service.service';
 
 @Component({
   selector: 'app-tab3',
@@ -16,12 +17,16 @@ export class Tab3Page implements OnInit {
   generos: Genre[] = [];
 
   constructor(private dataLocalService: DataLocalService, private moviesService: MoviesService,
-    private modalCtrl: ModalController) { }
+    private modalCtrl: ModalController, private nativeStorage: NativeStorageServiceService) { }
 
   async ngOnInit() {
-    this.peliculas = await this.dataLocalService.cargarFavoritos();
+    this.peliculas = await this.nativeStorage.cargarFavoritos();
     this.moviesService.getGeneros().subscribe(resp => {
       this.generos = resp['genres'];
+      this.generos.push({
+        id: 0,
+        name: 'Todos'
+      });
     });
   }
 
@@ -34,8 +39,11 @@ export class Tab3Page implements OnInit {
   }
 
   async filtrarPeliculas(genero: Genre) {
-    console.log(genero);
-    this.peliculas = await this.dataLocalService.peliculasPorGenero(genero);
+    if (genero.name === 'Todos') {
+      this.peliculas = await this.nativeStorage.cargarFavoritos();
+    } else {
+      this.peliculas = await this.nativeStorage.peliculasPorGenero(genero);
+    }
   }
 
 }

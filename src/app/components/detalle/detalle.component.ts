@@ -3,6 +3,7 @@ import { MoviesService } from '../../services/movies.service';
 import { Cast, PeliculaDetalle, SocialMedia } from '../../Interfaces/interfaces';
 import { ModalController } from '@ionic/angular';
 import { DataLocalService } from '../../services/data-local.service';
+import { NativeStorageServiceService } from '../../services/native-storage-service.service';
 
 @Component({
   selector: 'app-detalle',
@@ -24,10 +25,11 @@ export class DetalleComponent implements OnInit {
 
   constructor(private moviesService: MoviesService,
     private modalCtrl: ModalController,
-    private dataLocal: DataLocalService) { }
+    private dataLocal: DataLocalService,
+    private nativeStorage: NativeStorageServiceService) { }
 
   async ngOnInit() {
-    this.existe = await this.dataLocal.existePelicula(this.id);
+    this.existe = await this.nativeStorage.existePelicula(this.id);
 
     this.moviesService.getPeliculaDetalle(this.id).subscribe(resp => {
       this.pelicula = resp;
@@ -48,7 +50,7 @@ export class DetalleComponent implements OnInit {
 
   favorito() {
     this.existe = !this.existe;
-    this.dataLocal.guardarPelicula(this.pelicula);
+    this.nativeStorage.guardarPelicula(this.pelicula);
   }
 
 }
