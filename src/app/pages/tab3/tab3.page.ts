@@ -1,10 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { PeliculaDetalle, Genre } from '../Interfaces/interfaces';
-import { DataLocalService } from '../services/data-local.service';
-import { MoviesService } from '../services/movies.service';
+import { PeliculaDetalle, Genre } from '../../Interfaces/interfaces';
+import { DataLocalService } from '../../services/data-local.service';
+import { MoviesService } from '../../services/movies.service';
 import { ModalController } from '@ionic/angular';
-import { DetalleComponent } from '../components/detalle/detalle.component';
-import { NativeStorageServiceService } from '../services/native-storage-service.service';
+import { DetalleComponent } from '../../components/detalle/detalle.component';
+import { NativeStorageServiceService } from '../../services/native-storage-service.service';
 
 @Component({
   selector: 'app-tab3',

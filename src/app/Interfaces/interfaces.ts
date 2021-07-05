@@ -115,3 +115,13 @@ export interface SocialMedia {
   instagram_id?: string;
   twitter_id?: string;
 }
+
+export interface User {
+  id?: string,
+  name?: string,
+  mail?: string,
+  password?: string,
+  role?: string,
+  google?: boolean,
+  status?: boolean
+}

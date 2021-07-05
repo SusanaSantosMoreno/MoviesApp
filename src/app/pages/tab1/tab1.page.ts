@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { MoviesService } from '../services/movies.service';
-import { ResponseMDB, Pelicula } from '../Interfaces/interfaces';
+import { MoviesService } from '../../services/movies.service';
+import { ResponseMDB, Pelicula } from '../../Interfaces/interfaces';
 
 @Component({
   selector: 'app-tab1',

@@ -1,8 +1,8 @@
 import { Component } from '@angular/core';
-import { MoviesService } from '../services/movies.service';
-import { Pelicula } from '../Interfaces/interfaces';
+import { MoviesService } from '../../services/movies.service';
+import { Pelicula } from '../../Interfaces/interfaces';
 import { ModalController } from '@ionic/angular';
-import { DetalleComponent } from '../components/detalle/detalle.component';
+import { DetalleComponent } from '../../components/detalle/detalle.component';
 
 @Component({
   selector: 'app-tab2',
