@@ -15,13 +15,20 @@
           <ion-row>
             <ion-col>
               <ion-list>
-                <ion-item>
+                <ion-item lines='none'>
                   <ion-label>Email</ion-label>
-                  <ion-input name="email" type="email" ([ngModel])='loginUser.mail' required></ion-input>
                 </ion-item>
                 <ion-item>
+                  <ion-input name="email" type="email" color="medium" [(ngModel)]='loginUser.mail'
+                    placeholder="mail@mail.com" required></ion-input>
+                </ion-item>
+                <ion-item lines='none'>
                   <ion-label>Password</ion-label>
-                  <ion-input name="password" type="password" ([ngModel])='loginUser.password' required></ion-input>
+                </ion-item>
+                <ion-item>
+                  <ion-input name="password" placeholder="password" type="password" color="medium"
+                    [(ngModel)]='loginUser.password' required>
+                  </ion-input>
                 </ion-item>
               </ion-list>
             </ion-col>
@@ -71,19 +78,28 @@
 
               <ion-list>
 
-                <ion-item>
+                <ion-item lines='none'>
                   <ion-label>Email</ion-label>
-                  <ion-input name="email" type="email" ([ngModel])='loginUser.mail' required></ion-input>
+                </ion-item>
+                <ion-item>
+                  <ion-input name="email" type="email" color="medium" [(ngModel)]='signUpUser.mail' required>
+                  </ion-input>
                 </ion-item>
 
-                <ion-item>
+                <ion-item lines='none'>
                   <ion-label>Nombre</ion-label>
-                  <ion-input name="nombre" type="text" ([ngModel])='loginUser.password' required></ion-input>
+                </ion-item>
+                <ion-item>
+                  <ion-input name="nombre" type="text" color="medium" [(ngModel)]='signUpUser.name' required>
+                  </ion-input>
                 </ion-item>
 
-                <ion-item>
+                <ion-item lines='none'>
                   <ion-label>Password</ion-label>
-                  <ion-input name="password" type="password" required></ion-input>
+                </ion-item>
+                <ion-item>
+                  <ion-input name="password" type="password" color="medium" [(ngModel)]='signUpUser.password' required>
+                  </ion-input>
                 </ion-item>
 
               </ion-list>
